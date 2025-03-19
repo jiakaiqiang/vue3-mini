@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+   
+</body>
+<script type="module">
+    import {reactive,effect } from './packages/reactivity/dist/reactivity.js'
+    let app = document.getElementById('app')
+    let obj = reactive({
+        name:"张三",
+        age:18
+    })
+    effect(()=>{
+        app.innerHTML = `<div>姓名：${obj.name}</div><div>年龄：${obj.age}</div>`
+    })
+    setTimeout(()=>{
+        obj.name = '李四'
+      
+    },1000)
+</script>
+</html>

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../share/src/index.ts", "../src/reactive.ts", "../src/effect.ts"],
+  "sourcesContent": ["export function isObject(val) {\r\n  return val !== null && typeof val === 'object'\r\n}", "import { isObject } from \"@vue/share\"\r\nconst  mutableHandlers = {\r\n    get(target,key){\r\n        //\u8FDB\u884C\u4F9D\u8D56\u6536\u96C6\r\n        return Reflect.get(target,key)\r\n    },\r\n    set(target,key,value){\r\n        //\u8FDB\u884C\u4F9D\u8D56\u66F4\u65B0\r\n        return Reflect.set(target,key,value)\r\n    },\r\n    \r\n}\r\n\r\nexport function reactive(target){\r\n    return  createReactive(target)\r\n\r\n}\r\nfunction  createReactive(target){\r\n    if(!isObject(target)){\r\n        return \r\n    }\r\n    const proxy =  new Proxy(target,mutableHandlers)\r\n    return proxy\r\n\r\n}", "export function effect(fn){\r\n    fn()\r\n}"],
+  "mappings": ";AAAO,SAAS,SAAS,KAAK;AAC5B,SAAO,QAAQ,QAAQ,OAAO,QAAQ;AACxC;;;ACDA,IAAO,kBAAkB;AAAA,EACrB,IAAI,QAAO,KAAI;AAEX,WAAO,QAAQ,IAAI,QAAO,GAAG;AAAA,EACjC;AAAA,EACA,IAAI,QAAO,KAAI,OAAM;AAEjB,WAAO,QAAQ,IAAI,QAAO,KAAI,KAAK;AAAA,EACvC;AAEJ;AAEO,SAAS,SAAS,QAAO;AAC5B,SAAQ,eAAe,MAAM;AAEjC;AACA,SAAU,eAAe,QAAO;AAC5B,MAAG,CAAC,SAAS,MAAM,GAAE;AACjB;AAAA,EACJ;AACA,QAAM,QAAS,IAAI,MAAM,QAAO,eAAe;AAC/C,SAAO;AAEX;;;ACxBO,SAAS,OAAO,IAAG;AACtB,KAAG;AACP;",
+  "names": []
+}
